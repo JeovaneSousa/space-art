@@ -13,7 +13,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         didSet {
             guard let photo = photo else {return}
             titleLabel.text = photo.title
-            dateLabel.text = String(describing: photo.date)
+            dateLabel.text = photo.date
         }
     }
     

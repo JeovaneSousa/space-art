@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let spaceController = SpacePhotosViewController()
         spaceController.tabBarItem = UITabBarItem(title: "Space Photos", image: .actions, tag: 1)
-        spaceController.spacePhotosViewModel = SpacePhotosViewModel(apodApi: APODApi())
+        spaceController.spacePhotosViewModel = SpacePhotosViewModel()
+        spaceController.spacePhotosViewModel?.apodApi = APODApi()
         
         let favoritesController = FavoritePhotosViewController()
         favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)

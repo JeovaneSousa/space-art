@@ -11,13 +11,7 @@ import UIKit
 
 class SpacePhotosViewController: UIViewController {
 
-    var spacePhotosViewModel: SpacePhotosViewModel? {
-        didSet {
-            if isViewLoaded {
-                tableView.reloadData()
-            }
-        }
-    }
+    var spacePhotosViewModel: SpacePhotosViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +39,7 @@ class SpacePhotosViewController: UIViewController {
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.delegate = self
         tableview.dataSource = self
+        spacePhotosViewModel?.delegate = self
         tableview.backgroundColor = .clear
         tableview.register(SpacePhotoTableViewCell.self, forCellReuseIdentifier: SpacePhotoTableViewCell.identifier)
         
@@ -53,10 +48,21 @@ class SpacePhotosViewController: UIViewController {
     
 }
 
+//MARK: - Implements delegate
+extension SpacePhotosViewController: SpacePhotosViewModelDelegate {
+    func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, didLoadPhotos: [Photo]) {
+        tableView.reloadData()
+    }
+    
+    
+}
+
+
+//MARK: - Implements tableView related protocols
 extension SpacePhotosViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spacePhotosViewModel?.photos.count ?? 0
+        return spacePhotosViewModel?.photos.count ?? 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +83,7 @@ extension SpacePhotosViewController: UITableViewDelegate {
 }
 
 
-
+//MARK: - Implements the Viewcode protocol
 extension SpacePhotosViewController: Viewcode {
     func buildHierarchies() {
         view.addSubview(navigationBar)

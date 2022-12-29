@@ -7,13 +7,19 @@
 
 import Foundation
 
+protocol SpacePhotosViewModelDelegate: AnyObject {
+    func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, didLoadPhotos: [Photo])
+}
+
 class SpacePhotosViewModel {
     
-    var photos: [Photo] = []
+    weak var delegate: SpacePhotosViewModelDelegate?
     var apodApi: APODApi?
     
-    init(apodApi: APODApi? = nil) {
-        self.apodApi = apodApi
+    var photos: [Photo] = [] {
+        didSet{
+            delegate?.spacePhotosViewModel(self, didLoadPhotos: photos)
+        }
     }
     
     func loadPhotos() {
@@ -28,8 +34,5 @@ class SpacePhotosViewModel {
             }
         })
     }
-    
-    
-    
     
 }

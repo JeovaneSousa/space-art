@@ -12,7 +12,7 @@ class APODApi {
     var decoder: JSONDecoder?
     var session: URLSession?
     var dataTask: URLSessionDataTask?
-    var count: Int = 20
+    var count: Int = 12
     var apiKey: String = "dcmmmySJyGWkzZaooad3ZmrKkuOYiVdaDwFKc5R7"
     
     init(decoder: JSONDecoder? = JSONDecoder(), session: URLSession? = URLSession.shared) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B159AA28295E5E9600DB336F /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AA27295E5E9600DB336F /* UIAlertController.swift */; };
 		D993487A295B8523009EE877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934879295B8523009EE877 /* AppDelegate.swift */; };
 		D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993487B295B8523009EE877 /* SceneDelegate.swift */; };
 		D993487E295B8523009EE877 /* SpacePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993487D295B8523009EE877 /* SpacePhotosViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B159AA27295E5E9600DB336F /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		D9934876295B8523009EE877 /* Space Art.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Art.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9934879295B8523009EE877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D993487B295B8523009EE877 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				D9934894295B99C6009EE877 /* UITabBarController.swift */,
 				D9934896295B9B8B009EE877 /* UIColors.swift */,
 				D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */,
+				B159AA27295E5E9600DB336F /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				D993489A295C80C1009EE877 /* Viewcode.swift in Sources */,
 				D9934897295B9B8B009EE877 /* UIColors.swift in Sources */,
 				D9C75CCB295CD3940077AC28 /* UITableviewCell.swift in Sources */,
+				B159AA28295E5E9600DB336F /* UIAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

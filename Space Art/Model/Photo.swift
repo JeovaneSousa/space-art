@@ -8,10 +8,12 @@
 import Foundation
 
 struct Photo: Decodable {
-    let title: String
-    let date: Date
-    let url: String
-    let hdurl: String
-    let explanation: String
+    let title: String?
+    let date: String?
+    let url: String?
+    let hdurl: String?
+    let explanation: String?
     let copyright: String?
 }
+
+
