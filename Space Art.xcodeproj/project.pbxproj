@@ -19,6 +19,8 @@
 		D9C75CC6295CBE8E0077AC28 /* SpacePhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CC5295CBE8E0077AC28 /* SpacePhotosViewModel.swift */; };
 		D9C75CC9295CD3770077AC28 /* SpacePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CC8295CD3770077AC28 /* SpacePhotoTableViewCell.swift */; };
 		D9C75CCB295CD3940077AC28 /* UITableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */; };
+		D9C75CCD295E05F80077AC28 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CCC295E05F80077AC28 /* Photo.swift */; };
+		D9C75CD0295E103E0077AC28 /* APODApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CCF295E103E0077AC28 /* APODApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		D9C75CC5295CBE8E0077AC28 /* SpacePhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePhotosViewModel.swift; sourceTree = "<group>"; };
 		D9C75CC8295CD3770077AC28 /* SpacePhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePhotoTableViewCell.swift; sourceTree = "<group>"; };
 		D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewCell.swift; sourceTree = "<group>"; };
+		D9C75CCC295E05F80077AC28 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D9C75CCF295E103E0077AC28 /* APODApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 				D993488D295B8737009EE877 /* Supportive Files */,
 				D9934898295C809B009EE877 /* Protocols */,
 				D9934893295B9989009EE877 /* Extensions */,
+				D9C75CCE295E0DAF0077AC28 /* API */,
 				D9C75CC1295CBC010077AC28 /* Model */,
 				D993488E295B877B009EE877 /* Scenes */,
 				D9934882295B8525009EE877 /* Assets.xcassets */,
@@ -137,6 +142,7 @@
 		D9C75CC1295CBC010077AC28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D9C75CCC295E05F80077AC28 /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +161,14 @@
 				D9C75CC8295CD3770077AC28 /* SpacePhotoTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D9C75CCE295E0DAF0077AC28 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D9C75CCF295E103E0077AC28 /* APODApi.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,11 +243,13 @@
 			files = (
 				D993487E295B8523009EE877 /* SpacePhotosViewController.swift in Sources */,
 				D9C75CC9295CD3770077AC28 /* SpacePhotoTableViewCell.swift in Sources */,
+				D9C75CD0295E103E0077AC28 /* APODApi.swift in Sources */,
 				D9934892295B89C2009EE877 /* FavoritePhotosViewController.swift in Sources */,
 				D9C75CC6295CBE8E0077AC28 /* SpacePhotosViewModel.swift in Sources */,
 				D993487A295B8523009EE877 /* AppDelegate.swift in Sources */,
 				D9934895295B99C6009EE877 /* UITabBarController.swift in Sources */,
 				D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */,
+				D9C75CCD295E05F80077AC28 /* Photo.swift in Sources */,
 				D993489A295C80C1009EE877 /* Viewcode.swift in Sources */,
 				D9934897295B9B8B009EE877 /* UIColors.swift in Sources */,
 				D9C75CCB295CD3940077AC28 /* UITableviewCell.swift in Sources */,

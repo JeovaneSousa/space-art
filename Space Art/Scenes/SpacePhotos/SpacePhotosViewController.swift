@@ -11,9 +11,18 @@ import UIKit
 
 class SpacePhotosViewController: UIViewController {
 
+    var spacePhotosViewModel: SpacePhotosViewModel? {
+        didSet {
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewCode()
+        spacePhotosViewModel?.loadPhotos()
     }
     
     
@@ -37,8 +46,6 @@ class SpacePhotosViewController: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.backgroundColor = .clear
-        tableview.rowHeight = 150
-        tableview.estimatedRowHeight = 150
         tableview.register(SpacePhotoTableViewCell.self, forCellReuseIdentifier: SpacePhotoTableViewCell.identifier)
         
         return tableview
@@ -49,15 +56,14 @@ class SpacePhotosViewController: UIViewController {
 extension SpacePhotosViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-        
+        return spacePhotosViewModel?.photos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SpacePhotoTableViewCell.identifier, for: indexPath) as? SpacePhotoTableViewCell else {
             fatalError("Unable to acquire cell with identifier \(SpacePhotoTableViewCell.identifier) to present")
         }
-        
+        cell.photo = spacePhotosViewModel?.photos[indexPath.row]
         return cell
     }
     
@@ -65,7 +71,9 @@ extension SpacePhotosViewController: UITableViewDataSource {
 }
 
 extension SpacePhotosViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 
