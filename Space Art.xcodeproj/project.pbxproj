@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B159AA28295E5E9600DB336F /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AA27295E5E9600DB336F /* UIAlertController.swift */; };
+		2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897B42E298FE55C0007AF90 /* HttpRequest.swift */; };
+		28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD112990C60800F350B6 /* NetworkUtils.swift */; };
+		28B0CD142990C67500F350B6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD132990C67500F350B6 /* Theme.swift */; };
+		B159AA28295E5E9600DB336F /* UIAlertController + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */; };
 		D993487A295B8523009EE877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934879295B8523009EE877 /* AppDelegate.swift */; };
 		D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993487B295B8523009EE877 /* SceneDelegate.swift */; };
 		D993487E295B8523009EE877 /* SpacePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D993487D295B8523009EE877 /* SpacePhotosViewController.swift */; };
@@ -25,7 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B159AA27295E5E9600DB336F /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		2897B42E298FE55C0007AF90 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		28B0CD112990C60800F350B6 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		28B0CD132990C67500F350B6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + UIViewController.swift"; sourceTree = "<group>"; };
 		D9934876295B8523009EE877 /* Space Art.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Art.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9934879295B8523009EE877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D993487B295B8523009EE877 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +135,7 @@
 				D9934894295B99C6009EE877 /* UITabBarController.swift */,
 				D9934896295B9B8B009EE877 /* UIColors.swift */,
 				D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */,
-				B159AA27295E5E9600DB336F /* UIAlertController.swift */,
+				B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				D9934899295C80C1009EE877 /* Viewcode.swift */,
+				28B0CD132990C67500F350B6 /* Theme.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -169,7 +176,9 @@
 		D9C75CCE295E0DAF0077AC28 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				28B0CD112990C60800F350B6 /* NetworkUtils.swift */,
 				D9C75CCF295E103E0077AC28 /* APODApi.swift */,
+				2897B42E298FE55C0007AF90 /* HttpRequest.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -249,14 +258,17 @@
 				D9C75CD0295E103E0077AC28 /* APODApi.swift in Sources */,
 				D9934892295B89C2009EE877 /* FavoritePhotosViewController.swift in Sources */,
 				D9C75CC6295CBE8E0077AC28 /* SpacePhotosViewModel.swift in Sources */,
+				2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */,
 				D993487A295B8523009EE877 /* AppDelegate.swift in Sources */,
+				28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */,
 				D9934895295B99C6009EE877 /* UITabBarController.swift in Sources */,
+				28B0CD142990C67500F350B6 /* Theme.swift in Sources */,
 				D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */,
 				D9C75CCD295E05F80077AC28 /* Photo.swift in Sources */,
 				D993489A295C80C1009EE877 /* Viewcode.swift in Sources */,
 				D9934897295B9B8B009EE877 /* UIColors.swift in Sources */,
 				D9C75CCB295CD3940077AC28 /* UITableviewCell.swift in Sources */,
-				B159AA28295E5E9600DB336F /* UIAlertController.swift in Sources */,
+				B159AA28295E5E9600DB336F /* UIAlertController + UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,90 +9,42 @@ import Foundation
 
 class APODApi {
     
-    var decoder: JSONDecoder?
-    var session: URLSession?
-    var dataTask: URLSessionDataTask?
-    var count: Int = 12
-    var apiKey: String = "dcmmmySJyGWkzZaooad3ZmrKkuOYiVdaDwFKc5R7"
+    let httpRequest: HttpRequest
     
-    init(decoder: JSONDecoder? = JSONDecoder(), session: URLSession? = URLSession.shared) {
-        self.decoder = decoder
-        self.session = session
+    init(httpRequest: HttpRequest = .init()) {
+        self.httpRequest = httpRequest
     }
     
-    func getPhotos(completionHandler: @escaping (ApiResponse) -> Void) {
+    func getPhotos(mainQueue: DispatchQueue = .main,
+                   completionHandler: @escaping (ApiResult<[Photo]>) -> Void) {
         
-        //prepare URL
-        guard let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)&count=\(count)") else {return}
-        print(url)
-        dataTask?.cancel()
-        dataTask = session?.dataTask(with: url, completionHandler: { [weak self] data, response, error in
-            
-            defer {
-                self?.dataTask = nil
-            }
-            
-            //Check for errors making the request
-            if let error = error {
-                DispatchQueue.main.async {
-                    completionHandler(ApiResponse.failure(.requestFailed(error)))
-                }
-                return
-            }
-            
-            //Check for errors in the server response
-            guard let data = data,
-                 let response = response as? HTTPURLResponse,
-                  response.statusCode == 200 else {
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.fetchFailed))
-                }
-                return
-            }
-            
-            //Check for error in parsing the data
-            do {
-                guard let self = self else {return}
+        httpRequest.execute { (result: HttpResult<[Photo]>) in
+            switch result {
                 
-                let result = try self.decoder?.decode([Photo].self, from: data)
-                
-                print(result!)
-                
-                DispatchQueue.main.async {
-                    guard let result = result else {return}
-                    completionHandler(.sucess(result))
+            case .success(let photos):
+                mainQueue.async {
+                    completionHandler(.success(photos))
                 }
                 
-            } catch {
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.invalidData))
+            case .failure(let error):
+                mainQueue.async {
+                    completionHandler(.failure(.NetworkError(error)))
                 }
             }
-        })
-        dataTask?.resume()
+        }
+        
     }
 }
 
-extension APODApi {
-    enum Error: Swift.Error, LocalizedError {
-        case requestFailed(Swift.Error)
-        case fetchFailed
-        case invalidData
-        
-        var errorDescription: String? {
-            switch self {
-            case .requestFailed(let error):
-                return "Error while making the request: \(error.localizedDescription)"
-            case .fetchFailed:
-                return "Unable to retrive data from the server."
-            case .invalidData:
-                return "Unable to parse data"
-            }
+enum ApiError: Swift.Error, LocalizedError {
+    case NetworkError(NetworkError)
+
+    var errorMessage: String? {
+        switch self {
+        case .NetworkError(let error): return "An error occurred: \(error.errorMessage)"
         }
     }
-    
-    enum ApiResponse {
-        case sucess([Photo])
-        case failure(APODApi.Error)
-    }
 }
+    
+
+

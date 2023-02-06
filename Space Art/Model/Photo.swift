@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Codable {
     let title: String?
     let date: String?
     let url: String?

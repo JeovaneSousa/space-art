@@ -17,6 +17,8 @@ class SpacePhotosViewController: UIViewController {
         super.viewDidLoad()
         setupViewCode()
         spacePhotosViewModel?.loadPhotos()
+        setupTheme()
+        
     }
     
     
@@ -50,19 +52,21 @@ class SpacePhotosViewController: UIViewController {
 
 //MARK: - Implements delegate
 extension SpacePhotosViewController: SpacePhotosViewModelDelegate {
+    
     func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, didLoadPhotos: [Photo]) {
         tableView.reloadData()
     }
     
-    
+    func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, errorOccurred: ApiError) {
+        alertError(withMessage: errorOccurred.errorMessage!)
+    }
 }
-
 
 //MARK: - Implements tableView related protocols
 extension SpacePhotosViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spacePhotosViewModel?.photos.count ?? 4
+        return spacePhotosViewModel?.photos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,8 +76,6 @@ extension SpacePhotosViewController: UITableViewDataSource {
         cell.photo = spacePhotosViewModel?.photos[indexPath.row]
         return cell
     }
-    
-    
 }
 
 extension SpacePhotosViewController: UITableViewDelegate {
@@ -102,7 +104,6 @@ extension SpacePhotosViewController: Viewcode {
     }
     
     func applyAdditionalSetup() {
-        view.backgroundColor = .blueMaroto
     }
     
     

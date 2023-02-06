@@ -9,6 +9,7 @@ import Foundation
 
 protocol SpacePhotosViewModelDelegate: AnyObject {
     func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, didLoadPhotos: [Photo])
+    func spacePhotosViewModel(_ viewModel: SpacePhotosViewModel, errorOccurred: ApiError)
 }
 
 class SpacePhotosViewModel {
@@ -23,16 +24,19 @@ class SpacePhotosViewModel {
     }
     
     func loadPhotos() {
-        apodApi?.getPhotos(completionHandler: { [weak self] response in
-            switch response {
-                
-            case .sucess(let newPhotos):
-                self?.photos.append(contentsOf: newPhotos)
+        apodApi?.getPhotos { [weak self] (result: ApiResult<[Photo]>) in
             
+            guard let self = self else { return }
+            switch result {
+                
+            case .success(let photos):
+                self.photos.append(contentsOf: photos)
+                
             case .failure(let error):
-                print(error.errorDescription!)
+                debugPrint(error.errorMessage!)
+                self.delegate?.spacePhotosViewModel(self, errorOccurred: error)
             }
-        })
+        }
     }
     
 }
