@@ -22,19 +22,19 @@ class SpacePhotosViewController: UIViewController {
     }
     
     
-//    lazy var navigationBar: UINavigationBar = {
-//        let navigationbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 110))
-//        navigationbar.backgroundColor = .darkMaroto
-//        
-//        let appearence = UINavigationBarAppearance()
-//        appearence.titleTextAttributes = [.font: UIFont(name: "Georgia-bold", size: 20)!,
-//                                       .foregroundColor: UIColor.white]
-//        navigationItem.standardAppearance = appearence
-//        
-//        navigationItem.title = "NASA Photo Of The Day"
-//        
-//        return navigationbar
-//    }()
+    lazy var navigationBar: UINavigationBar = {
+        let navigationbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 110))
+        navigationbar.backgroundColor = .darkMaroto
+
+        let appearence = UINavigationBarAppearance()
+        appearence.titleTextAttributes = [.font: UIFont(name: "Georgia-bold", size: 20)!,
+                                       .foregroundColor: UIColor.white]
+        navigationItem.standardAppearance = appearence
+
+        navigationItem.title = "NASA Photo Of The Day"
+
+        return navigationbar
+    }()
     
     lazy var tableView: UITableView = {
         let tableview = UITableView()
