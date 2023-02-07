@@ -15,26 +15,10 @@ class SpacePhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTheme()
         setupViewCode()
         spacePhotosViewModel?.loadPhotos()
-        setupTheme()
-        
     }
-    
-    
-    lazy var navigationBar: UINavigationBar = {
-        let navigationbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 110))
-        navigationbar.backgroundColor = .darkMaroto
-
-        let appearence = UINavigationBarAppearance()
-        appearence.titleTextAttributes = [.font: UIFont(name: "Georgia-bold", size: 20)!,
-                                       .foregroundColor: UIColor.white]
-        navigationItem.standardAppearance = appearence
-
-        navigationItem.title = "NASA Photo Of The Day"
-
-        return navigationbar
-    }()
     
     lazy var tableView: UITableView = {
         let tableview = UITableView()
@@ -88,14 +72,13 @@ extension SpacePhotosViewController: UITableViewDelegate {
 //MARK: - Implements the Viewcode protocol
 extension SpacePhotosViewController: Viewcode {
     func buildHierarchies() {
-        view.addSubview(navigationBar)
         view.addSubview(tableView)
     }
     
     func addConstraints() {
         //Tableview Contraints
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 44),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -104,6 +87,7 @@ extension SpacePhotosViewController: Viewcode {
     }
     
     func applyAdditionalSetup() {
+        view.backgroundColor = .blueMaroto
     }
     
     

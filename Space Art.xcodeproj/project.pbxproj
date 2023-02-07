@@ -17,7 +17,6 @@
 		D9934883295B8525009EE877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9934882295B8525009EE877 /* Assets.xcassets */; };
 		D9934886295B8525009EE877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9934884295B8525009EE877 /* LaunchScreen.storyboard */; };
 		D9934892295B89C2009EE877 /* FavoritePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934891295B89C2009EE877 /* FavoritePhotosViewController.swift */; };
-		D9934895295B99C6009EE877 /* UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934894295B99C6009EE877 /* UITabBarController.swift */; };
 		D9934897295B9B8B009EE877 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934896295B9B8B009EE877 /* UIColors.swift */; };
 		D993489A295C80C1009EE877 /* Viewcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9934899295C80C1009EE877 /* Viewcode.swift */; };
 		D9C75CC6295CBE8E0077AC28 /* SpacePhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C75CC5295CBE8E0077AC28 /* SpacePhotosViewModel.swift */; };
@@ -40,7 +39,6 @@
 		D9934885295B8525009EE877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9934887295B8525009EE877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9934891295B89C2009EE877 /* FavoritePhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePhotosViewController.swift; sourceTree = "<group>"; };
-		D9934894295B99C6009EE877 /* UITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarController.swift; sourceTree = "<group>"; };
 		D9934896295B9B8B009EE877 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		D9934899295C80C1009EE877 /* Viewcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewcode.swift; sourceTree = "<group>"; };
 		D9C75CC5295CBE8E0077AC28 /* SpacePhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePhotosViewModel.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 		D9934893295B9989009EE877 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D9934894295B99C6009EE877 /* UITabBarController.swift */,
 				D9934896295B9B8B009EE877 /* UIColors.swift */,
 				D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */,
 				B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */,
@@ -261,7 +258,6 @@
 				2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */,
 				D993487A295B8523009EE877 /* AppDelegate.swift in Sources */,
 				28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */,
-				D9934895295B99C6009EE877 /* UITabBarController.swift in Sources */,
 				28B0CD142990C67500F350B6 /* Theme.swift in Sources */,
 				D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */,
 				D9C75CCD295E05F80077AC28 /* Photo.swift in Sources */,

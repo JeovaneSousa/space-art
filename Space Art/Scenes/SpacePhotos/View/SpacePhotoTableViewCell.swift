@@ -32,7 +32,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 20
-        view.backgroundColor = .grayMaroto
+        view.backgroundColor = .darkMaroto
         
         return view
     }()
@@ -55,7 +55,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .darkMaroto
+        label.textColor = .white
         label.text = "Insert title here"
         
         return label
@@ -64,7 +64,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .light)
-        label.textColor = .darkMaroto
+        label.textColor = .white
         label.text = "1985/02/25"
         
         return label

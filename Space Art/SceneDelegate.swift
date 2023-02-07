@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let tabBarController = UITabBarController()
+        setupTabBarAndNavigationBarAppearence()
         
         let spaceController = SpacePhotosViewController()
         spaceController.tabBarItem = UITabBarItem(title: "Space Photos", image: .actions, tag: 1)
@@ -29,14 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let favoritesController = FavoritePhotosViewController()
         favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)
-
         
         let navigationControllerForPhotos = UINavigationController(rootViewController: spaceController)
-       
         let navigationControllerForFavorites = UINavigationController(rootViewController: favoritesController)
-
+        
+        let tabBarController = UITabBarController()
         tabBarController.viewControllers = [navigationControllerForPhotos, navigationControllerForFavorites]
-        tabBarController.setupTabBar()
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.layer.masksToBounds = true
+        tabBarController.tabBar.layer.cornerRadius = 20
+
         
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
@@ -71,6 +73,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    fileprivate func setupTabBarAndNavigationBarAppearence(){
+        let appearence = UINavigationBarAppearance()
+        appearence.backgroundColor = .blueMaroto
+        UINavigationBar.appearance().scrollEdgeAppearance = appearence
+        UINavigationBar.appearance().standardAppearance = appearence
+        UINavigationBar.appearance().compactAppearance = appearence
+        
+        let tabAppearence = UITabBarAppearance()
+        tabAppearence.backgroundColor = .darkMaroto
+        UITabBar.appearance().scrollEdgeAppearance = tabAppearence
+        UITabBar.appearance().standardAppearance = tabAppearence
+    }
 }
 

@@ -13,37 +13,40 @@ protocol Theme: UIViewController {
 
 extension Theme {
     func setupTheme(){
-        view.backgroundColor = .black
-        setupTitleView()
+        setupNavigationBar()
     }
     
-    func setupTitleView() {
-        var uiView = UIView()
-        uiView.translatesAutoresizingMaskIntoConstraints = false
-        uiView.layer.masksToBounds = true
-        uiView.layer.cornerRadius = 8
+    func setupNavigationBar() {
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: logoImageView()), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(customView: headerLabel()), animated: true)
         
-        var containerStackView = UIStackView()
-        containerStackView.translatesAutoresizingMaskIntoConstraints = false
-        containerStackView.isLayoutMarginsRelativeArrangement = true
-        containerStackView.layoutMargins = .init(top: 5, left: 20, bottom: 20, right: 20)
-        containerStackView.axis = .horizontal
-        containerStackView.distribution = .equalCentering
-        containerStackView.alignment = .fill
-        
-        containerStackView.addArrangedSubview(uiView)
-        
-        NSLayoutConstraint.activate([
-            uiView.topAnchor.constraint(equalTo: containerStackView.topAnchor),
-            uiView.leadingAnchor.constraint(equalTo: containerStackView.leadingAnchor),
-            uiView.trailingAnchor.constraint(equalTo: containerStackView.trailingAnchor),
-            uiView.bottomAnchor.constraint(equalTo: containerStackView.bottomAnchor)
-        ])
+    }
+    
+    fileprivate func headerLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
 
+        label.text = "Space Art"
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .white
         
-        
+        return label
     }
     
+    fileprivate func logoImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = .init(systemName: "moon.stars.fill")
+        imageView.tintColor = .white
+
+
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 18),
+            imageView.widthAnchor.constraint(equalToConstant: 18)
+        ])
+        
+        return imageView
+    }
 }
 
 extension UIViewController: Theme {}
