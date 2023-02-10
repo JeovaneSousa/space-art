@@ -19,8 +19,8 @@ extension Theme {
     func setupNavigationBar() {
         navigationItem.setRightBarButton(UIBarButtonItem(customView: logoImageView()), animated: true)
         navigationItem.setLeftBarButton(UIBarButtonItem(customView: headerLabel()), animated: true)
-        
     }
+    
     
     fileprivate func headerLabel() -> UILabel {
         let label = UILabel()

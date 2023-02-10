@@ -20,17 +20,24 @@ class SpacePhotosViewController: UIViewController {
         spacePhotosViewModel?.loadPhotos()
     }
     
-    lazy var tableView: UITableView = {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barStyle = .black
+    }
+    
+    private lazy var tableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.delegate = self
         tableview.dataSource = self
         spacePhotosViewModel?.delegate = self
+        tableview.rowHeight = 140
         tableview.backgroundColor = .clear
         tableview.register(SpacePhotoTableViewCell.self, forCellReuseIdentifier: SpacePhotoTableViewCell.identifier)
         
         return tableview
     }()
+    
+    
     
 }
 
@@ -65,6 +72,7 @@ extension SpacePhotosViewController: UITableViewDataSource {
 extension SpacePhotosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print(spacePhotosViewModel!.photos[indexPath.row])
     }
 }
 
@@ -82,8 +90,8 @@ extension SpacePhotosViewController: Viewcode {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
         ])
+        
     }
     
     func applyAdditionalSetup() {

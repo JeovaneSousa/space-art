@@ -19,27 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
+        setupAppearence()
         
-        setupTabBarAndNavigationBarAppearence()
-        
-        let spaceController = SpacePhotosViewController()
-        spaceController.tabBarItem = UITabBarItem(title: "Space Photos", image: .actions, tag: 1)
-        spaceController.spacePhotosViewModel = SpacePhotosViewModel()
-        spaceController.spacePhotosViewModel?.apodApi = APODApi()
-        
-        let favoritesController = FavoritePhotosViewController()
-        favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)
-        
-        let navigationControllerForPhotos = UINavigationController(rootViewController: spaceController)
-        let navigationControllerForFavorites = UINavigationController(rootViewController: favoritesController)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationControllerForPhotos, navigationControllerForFavorites]
-        tabBarController.tabBar.tintColor = .white
-        tabBarController.tabBar.layer.masksToBounds = true
-        tabBarController.tabBar.layer.cornerRadius = 20
+        let tabBarController: UITabBarController = Cordinator.homeTabBar
+        tabBarController.tabBar.barStyle = .black
+        tabBarController.setViewControllers([Cordinator.spaceNavigationController,
+                                             Cordinator.favoritesNavigationController], animated: true)
 
-        
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
@@ -73,17 +59,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-    fileprivate func setupTabBarAndNavigationBarAppearence(){
-        let appearence = UINavigationBarAppearance()
-        appearence.backgroundColor = .blueMaroto
-        UINavigationBar.appearance().scrollEdgeAppearance = appearence
-        UINavigationBar.appearance().standardAppearance = appearence
-        UINavigationBar.appearance().compactAppearance = appearence
-        
-        let tabAppearence = UITabBarAppearance()
-        tabAppearence.backgroundColor = .darkMaroto
-        UITabBar.appearance().scrollEdgeAppearance = tabAppearence
-        UITabBar.appearance().standardAppearance = tabAppearence
-    }
 }
 

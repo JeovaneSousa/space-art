@@ -11,7 +11,7 @@ class FavoritePhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .blueMaroto
 
         // Do any additional setup after loading the view.
     }

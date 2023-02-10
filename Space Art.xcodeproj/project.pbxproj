@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2841D87829955394006B1C89 /* Setup + SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */; };
+		2841D87C2995672A006B1C89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841D87B2995672A006B1C89 /* Coordinator.swift */; };
 		2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897B42E298FE55C0007AF90 /* HttpRequest.swift */; };
 		28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD112990C60800F350B6 /* NetworkUtils.swift */; };
 		28B0CD142990C67500F350B6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD132990C67500F350B6 /* Theme.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setup + SceneDelegate.swift"; sourceTree = "<group>"; };
+		2841D87B2995672A006B1C89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2897B42E298FE55C0007AF90 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		28B0CD112990C60800F350B6 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		28B0CD132990C67500F350B6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				D9934879295B8523009EE877 /* AppDelegate.swift */,
 				D993487B295B8523009EE877 /* SceneDelegate.swift */,
 				D9934884295B8525009EE877 /* LaunchScreen.storyboard */,
+				2841D87B2995672A006B1C89 /* Coordinator.swift */,
 			);
 			name = "Supportive Files";
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 		D9934893295B9989009EE877 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */,
 				D9934896295B9B8B009EE877 /* UIColors.swift */,
 				D9C75CCA295CD3940077AC28 /* UITableviewCell.swift */,
 				B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */,
@@ -255,8 +261,10 @@
 				D9C75CD0295E103E0077AC28 /* APODApi.swift in Sources */,
 				D9934892295B89C2009EE877 /* FavoritePhotosViewController.swift in Sources */,
 				D9C75CC6295CBE8E0077AC28 /* SpacePhotosViewModel.swift in Sources */,
+				2841D87829955394006B1C89 /* Setup + SceneDelegate.swift in Sources */,
 				2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */,
 				D993487A295B8523009EE877 /* AppDelegate.swift in Sources */,
+				2841D87C2995672A006B1C89 /* Coordinator.swift in Sources */,
 				28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */,
 				28B0CD142990C67500F350B6 /* Theme.swift in Sources */,
 				D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */,

@@ -6,6 +6,10 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+			<key>NSIncludesSubdomains</key>
+			<true/>
 			<key>api.nasa.gov</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
@@ -13,10 +17,6 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>NSExceptionAllowsInsecureHTTPLoads</key>
-			<true/>
-			<key>NSIncludesSubdomains</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>UIApplicationSceneManifest</key>
