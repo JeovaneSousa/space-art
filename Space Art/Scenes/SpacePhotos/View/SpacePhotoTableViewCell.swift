@@ -47,6 +47,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         
         stackView.addArrangedSubview(apodImageView)
         stackView.addArrangedSubview(labelsStackView)
+        
         return stackView
     }()
     
@@ -57,6 +58,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 15
         imageView.backgroundColor = .white
+        imageView.tintColor = .tertiaryLabel
         imageView.image = .init(systemName: "apple.logo")
         imageView.image?.withTintColor(.tertiaryLabel)
 
@@ -78,6 +80,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         stackview.distribution = .fill
         stackview.addArrangedSubview(titleLabel)
         stackview.addArrangedSubview(subtitleStackView)
+        stackview.addArrangedSubview(interactionStackView)
         
         return stackview
     }()
@@ -140,6 +143,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         label.font = .systemFont(ofSize: 12, weight: .light)
         label.textColor = .white
         label.text = "1985/02/25"
@@ -150,26 +154,101 @@ class SpacePhotoTableViewCell: UITableViewCell {
     private lazy var interactionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = .init(top: 16, left: 0, bottom: 0, right: 0)
+        
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = 2
         stackView.distribution = .fill
-        stackView.alignment = .fill
+        stackView.alignment = .center
+        
+        stackView.addArrangedSubview(favoriteButton)
+        stackView.addArrangedSubview(likeStackView)
+        stackView.addArrangedSubview(fillerView)
         
         return stackView
     }()
     
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton(configuration: .plain())
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.configuration?.image = .init(systemName: "star")
+        button.tintColor = .white
+        
+        button.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
+        
+
+        return button
+    }()
+    
+    @IBAction func favoriteButtonClicked() {
+        favoriteButton.configuration?.image = .init(systemName: "star.fill")
+        debugPrint("Yay, added to favorites.")
+    }
+    
     private lazy var likeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = .init(top: 4, left: 0, bottom: 4, right: 14)
+        
         stackView.axis = .horizontal
+        stackView.spacing = 0
+        stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 2
+        stackView.backgroundColor = .tertiaryLabel
+        stackView.layer.masksToBounds = true
+        stackView.layer.cornerRadius = 14
+        
+        stackView.addArrangedSubview(likeButton)
+        stackView.addArrangedSubview(likeCounter)
         
         return stackView
     }()
+    
+    private lazy var likeButton: UIButton = {
+        let button = UIButton(configuration: .plain())
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.configuration?.image = .init(systemName: "heart")
+        button.tintColor = .white
+        
+        button.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @IBAction func likeButtonPressed() {
+        guard let counterText = likeCounter.text,
+                let counter = Int(counterText) else {return}
+        let newCount = counter + 1
+        likeCounter.text = String(describing: newCount)
+        debugPrint(newCount)
+    }
+    
+    private lazy var likeCounter: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.text = "0"
+        label.font = .systemFont(ofSize: 18, weight: .light)
+        label.textColor = .white
+        
+        
+        return label
+    }()
+    
+    private lazy var fillerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+    
+        return view
+    }()
+    
+    
 
 }
 

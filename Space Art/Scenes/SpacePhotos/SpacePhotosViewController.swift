@@ -30,15 +30,13 @@ class SpacePhotosViewController: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         spacePhotosViewModel?.delegate = self
-        tableview.rowHeight = 140
+        tableview.estimatedRowHeight = 120
         tableview.backgroundColor = .clear
         tableview.register(SpacePhotoTableViewCell.self, forCellReuseIdentifier: SpacePhotoTableViewCell.identifier)
         
         return tableview
     }()
-    
-    
-    
+
 }
 
 //MARK: - Implements delegate
