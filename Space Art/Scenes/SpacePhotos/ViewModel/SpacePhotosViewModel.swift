@@ -30,6 +30,11 @@ class SpacePhotosViewModel {
             switch result {
                 
             case .success(let photos):
+                photos.forEach{
+                    $0.isLiked = Bool.random()
+                    $0.isFavorited = false
+                }
+                
                 self.photos.append(contentsOf: photos)
                 
             case .failure(let error):

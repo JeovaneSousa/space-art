@@ -70,7 +70,14 @@ extension SpacePhotosViewController: UITableViewDataSource {
 extension SpacePhotosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(spacePhotosViewModel!.photos[indexPath.row])
+       
+        let selectedPhoto = spacePhotosViewModel!.photos[indexPath.row]
+        let controller = Cordinator.photoDetailsViewController as! PhotoDetailsViewController
+        controller.photo = selectedPhoto
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.present(controller, animated: true)
+        print(selectedPhoto.description)
     }
 }
 

@@ -68,7 +68,7 @@ class HttpRequest {
                         return .failure(.UnableToPerformRequest(error))
                     }
                     
-                    if let response = response as? HTTPURLResponse, response.inSucessRange {
+                    if let response = response as? HTTPURLResponse, !response.inSucessRange {
                         return .failure(.RequestFailed(response.statusCode))
                     }
                     

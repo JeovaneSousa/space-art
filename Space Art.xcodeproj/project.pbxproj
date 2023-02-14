@@ -10,6 +10,8 @@
 		2841D87829955394006B1C89 /* Setup + SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */; };
 		2841D87C2995672A006B1C89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841D87B2995672A006B1C89 /* Coordinator.swift */; };
 		2897B42F298FE55C0007AF90 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897B42E298FE55C0007AF90 /* HttpRequest.swift */; };
+		28AA67D9299AADF000D887AF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 28AA67D8299AADF000D887AF /* Kingfisher */; };
+		28AA67DC299AB26B00D887AF /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AA67DB299AB26B00D887AF /* PhotoDetailsViewController.swift */; };
 		28B0CD122990C60800F350B6 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD112990C60800F350B6 /* NetworkUtils.swift */; };
 		28B0CD142990C67500F350B6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0CD132990C67500F350B6 /* Theme.swift */; };
 		B159AA28295E5E9600DB336F /* UIAlertController + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */; };
@@ -32,6 +34,7 @@
 		2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setup + SceneDelegate.swift"; sourceTree = "<group>"; };
 		2841D87B2995672A006B1C89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2897B42E298FE55C0007AF90 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		28AA67DB299AB26B00D887AF /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 		28B0CD112990C60800F350B6 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		28B0CD132990C67500F350B6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B159AA27295E5E9600DB336F /* UIAlertController + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + UIViewController.swift"; sourceTree = "<group>"; };
@@ -57,12 +60,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28AA67D9299AADF000D887AF /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28AA67DA299AB1D600D887AF /* PhotoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				28AA67DB299AB26B00D887AF /* PhotoDetailsViewController.swift */,
+			);
+			path = PhotoDetails;
+			sourceTree = "<group>";
+		};
 		D993486D295B8523009EE877 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				D993488F295B897F009EE877 /* SpacePhotos */,
+				28AA67DA299AB1D600D887AF /* PhotoDetails */,
 				D9934890295B8990009EE877 /* FavoritePhotos */,
 			);
 			path = Scenes;
@@ -202,6 +215,9 @@
 			dependencies = (
 			);
 			name = "Space Art";
+			packageProductDependencies = (
+				28AA67D8299AADF000D887AF /* Kingfisher */,
+			);
 			productName = "Space Art";
 			productReference = D9934876295B8523009EE877 /* Space Art.app */;
 			productType = "com.apple.product-type.application";
@@ -230,6 +246,9 @@
 				Base,
 			);
 			mainGroup = D993486D295B8523009EE877;
+			packageReferences = (
+				28AA67D7299AADF000D887AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = D9934877295B8523009EE877 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,6 +289,7 @@
 				D993487C295B8523009EE877 /* SceneDelegate.swift in Sources */,
 				D9C75CCD295E05F80077AC28 /* Photo.swift in Sources */,
 				D993489A295C80C1009EE877 /* Viewcode.swift in Sources */,
+				28AA67DC299AB26B00D887AF /* PhotoDetailsViewController.swift in Sources */,
 				D9934897295B9B8B009EE877 /* UIColors.swift in Sources */,
 				D9C75CCB295CD3940077AC28 /* UITableviewCell.swift in Sources */,
 				B159AA28295E5E9600DB336F /* UIAlertController + UIViewController.swift in Sources */,
@@ -480,6 +500,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28AA67D7299AADF000D887AF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28AA67D8299AADF000D887AF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28AA67D7299AADF000D887AF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D993486E295B8523009EE877 /* Project object */;
 }

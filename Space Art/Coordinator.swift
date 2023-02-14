@@ -19,6 +19,9 @@ class Cordinator {
     static var favoritesNavigationController: UINavigationController {
         return UINavigationController(rootViewController: favoritesController())
     }
+    static var photoDetailsViewController: UIViewController {
+        return PhotoDetailsController()
+    }
     
     private static func homeTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
@@ -44,6 +47,12 @@ class Cordinator {
         favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)
         
         return favoritesController
+    }
+    
+    private static func PhotoDetailsController() -> UIViewController {
+        let photoDetailsController = PhotoDetailsViewController()
+        
+        return photoDetailsController
     }
     
 
