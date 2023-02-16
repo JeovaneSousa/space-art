@@ -29,6 +29,4 @@ The following tools were used during the project development:
 
 * The idea was to not focus so much on design, but to apply the concepts of UIKit and Swift learned so far.
 
-<div style="height: 533.33px; width: 300.00px; position:relative;"><iframe allow="autoplay; gyroscope;" allowfullscreen height="100%" referrerpolicy="strict-origin" src="https://www.kapwing.com/e/63ee4a7d7e60da0064a9c5b7?autoplay=true" style="border:0; height:100%; left:0; overflow:hidden; position:absolute; top:0; width:100%" title="Embedded content made on Kapwing" width="100%"></iframe></div><p style="font-size: 12px; text-align: right;">Video edited on <a href="https://www.kapwing.com/video-editor">Kapwing</a></p>
-
 /Users/jeovanebarbosa/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2023-02-16 at 12.55.03.gif
