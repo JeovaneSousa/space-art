@@ -34,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		280294C3299E80D200C040D8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2841D87729955394006B1C89 /* Setup + SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setup + SceneDelegate.swift"; sourceTree = "<group>"; };
 		2841D87B2995672A006B1C89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2897B42E298FE55C0007AF90 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -161,7 +160,6 @@
 				D993488E295B877B009EE877 /* Scenes */,
 				D9934882295B8525009EE877 /* Assets.xcassets */,
 				D9934887295B8525009EE877 /* Info.plist */,
-				280294C3299E80D200C040D8 /* README.md */,
 			);
 			path = "Space Art";
 			sourceTree = "<group>";
