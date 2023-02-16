@@ -13,7 +13,7 @@ About the app:
 
 The following topics were approached during development:
 * I tried to follow best practices when it comes to architechtural patterns by applying MVVM.
-* I also used the native URLSession approach to consume the API used in this project. The concept Generics and Result class were used to make the Network layer as expansible and general as possible.
+* I also used the native URLSession approach to consume the API used in this project. The concept of Generics and Result class were used to make the Network layer as expansible and general as possible.
 * Did my best to manage the memory and avoid retain cycles and to only update the UI using the main thread.
 * Delegate pattern was used to communicate between Scenes.
 * Everything was done programatically, which makes it a lot easier to review and maintain.
