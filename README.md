@@ -29,4 +29,14 @@ The following tools were used during the project development:
 
 * The idea was to not focus so much on design, but to apply the concepts of UIKit and Swift learned so far.
 
-/Users/jeovanebarbosa/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2023-02-16 at 12.55.03.gif
+https://user-images.githubusercontent.com/66012358/219421615-33579e69-cef1-4ccf-b795-8a1ed6658402.mp4
+
+https://user-images.githubusercontent.com/66012358/219421730-9c6879f7-6977-4a13-b3e0-4a32ac4491e8.mp4
+
+https://user-images.githubusercontent.com/66012358/219421805-dd898801-658f-4e1c-a713-f0e5cc0183b7.mp4
+
+https://user-images.githubusercontent.com/66012358/219421859-3c5fe509-e699-4146-8469-c7df47e6e1b0.mp4
+
+
+
+
