@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need your permission to be able to save an APOD picture into your camera roll.</string>
+	<string>We need your permission to save an APOD picture into your camera roll.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

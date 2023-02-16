@@ -54,7 +54,7 @@ extension SpacePhotosViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SpacePhotoTableViewCell.identifier, for: indexPath) as? SpacePhotoTableViewCell else {
             fatalError("Unable to acquire cell with identifier \(SpacePhotoTableViewCell.identifier) to present")
         }
-        
+
         cell.photo = spacePhotosViewModel?.photos[indexPath.row]
         return cell
     }
