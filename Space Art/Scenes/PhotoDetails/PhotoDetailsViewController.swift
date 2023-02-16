@@ -10,18 +10,31 @@ import Kingfisher
 
 class PhotoDetailsViewController: UIViewController {
     
-    var photo: Photo? {
-        didSet {
-            guard let photo = photo,
-                  let stringUrl = photo.url,
-                  let url = URL(string: stringUrl) else {return}
-            spacePhotoImageView.kf.setImage(with: url)
-        }
+    var photoDetailsViewModel: PhotoDetailsViewModel?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        photoDetailsViewModel?.delegate = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
         setupViewCode()
     }
+    
+//-----------------------------------------------------------------//
+//MARK: - Implements PhotoDetailsViewController
+//-----------------------------------------------------------------//
+    private lazy var statusBarView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.backgroundColor = UIColor(white: 0.0, alpha: 0.1)
+        
+        return view
+    }()
     
     private lazy var headerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -31,6 +44,7 @@ class PhotoDetailsViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
         stackView.backgroundColor = .clear
+        stackView.backgroundColor = UIColor(white: 0.0, alpha: 0.1)
         
         stackView.addArrangedSubview(backButton)
         stackView.addArrangedSubview(containerStackView)
@@ -49,10 +63,6 @@ class PhotoDetailsViewController: UIViewController {
         return button
     }()
     
-    @IBAction func popVc() {
-        self.dismiss(animated: true)
-    }
-    
     private lazy var containerStackView: UIView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,8 +73,8 @@ class PhotoDetailsViewController: UIViewController {
         stackView.alignment = .fill
         
         stackView.addArrangedSubview(infoButton)
-        stackView.addArrangedSubview(shareButton)
-
+        stackView.addArrangedSubview(screenShotButton)
+        
         return stackView
     }()
     
@@ -74,30 +84,20 @@ class PhotoDetailsViewController: UIViewController {
         
         button.tintColor = .white
         button.configuration?.image = .init(systemName: "info.bubble.fill")
+        button.addTarget(self, action: #selector(showDescription), for: .touchUpInside)
         
         return button
     }()
     
-    private lazy var shareButton: UIButton = {
+    private lazy var screenShotButton: UIButton = {
         let button = UIButton(configuration: .plain())
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.tintColor = .white
         button.configuration?.image = .init(systemName: "camera.fill")
+        button.addTarget(self, action: #selector(takeScreenshot), for: .touchUpInside)
         
         return button
-    }()
-    
-    private lazy var separatorView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.backgroundColor = .darkMaroto
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 1)
-        ])
-        
-        return view
     }()
     
     private lazy var spacePhotoImageView: UIImageView = {
@@ -108,14 +108,56 @@ class PhotoDetailsViewController: UIViewController {
         
         return imageView
     }()
-
-    
 }
 
+//-----------------------------------------------------------------//
+//MARK: - Implements Delegate
+//-----------------------------------------------------------------//
+extension PhotoDetailsViewController: PhotoDetailsViewModelDelegate {
+    func PhotoDetailsViewModel(viewModel: PhotoDetailsViewModel, chosenPhoto: Photo) {
+        setupForNewPhoto(photo: chosenPhoto)
+    }
+}
+
+//-----------------------------------------------------------------//
+//MARK: - Implements Helper Methods
+//-----------------------------------------------------------------//
+extension PhotoDetailsViewController {
+    @IBAction func popVc() {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction private func showDescription() {
+        let descriptionVc = Cordinator.photoDescriptionSheetPresentationController as! PhotoDescriptionViewController
+        descriptionVc.modalPresentationStyle = .pageSheet
+        descriptionVc.photo = self.photoDetailsViewModel?.photo
+        self.present(descriptionVc, animated: true)
+    }
+    
+    @IBAction private func takeScreenshot(){
+        UIGraphicsBeginImageContextWithOptions(spacePhotoImageView.bounds.size, false, 0.0)
+        spacePhotoImageView.drawHierarchy(in: spacePhotoImageView.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+    }
+    
+    private func setupForNewPhoto(photo: Photo?) {
+        guard let photo = photo,
+              let stringUrl = photo.url,
+              let url = URL(string: stringUrl) else {return}
+        spacePhotoImageView.kf.setImage(with: url)
+    }
+}
+
+//-----------------------------------------------------------------//
+//MARK: - Implements Viewcode Protocol
+//-----------------------------------------------------------------//
 extension PhotoDetailsViewController: Viewcode {
     func buildHierarchies() {
         view.addSubview(headerStackView)
-        view.addSubview(separatorView)
+        view.addSubview(statusBarView)
         view.addSubview(spacePhotoImageView)
     }
     
@@ -128,9 +170,10 @@ extension PhotoDetailsViewController: Viewcode {
         ])
         
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
-            separatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            statusBarView.topAnchor.constraint(equalTo: view.topAnchor),
+            statusBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statusBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            statusBarView.bottomAnchor.constraint(equalTo: headerStackView.topAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -144,6 +187,7 @@ extension PhotoDetailsViewController: Viewcode {
     func applyAdditionalSetup() {
         view.backgroundColor = .blueMaroto
         view.bringSubviewToFront(headerStackView)
+        view.bringSubviewToFront(statusBarView)
     }
     
     

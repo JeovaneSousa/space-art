@@ -11,7 +11,7 @@ import Foundation
 
 class HttpRequest {
     
-    let count = 12
+    let count = 10
     let apiKey = "dcmmmySJyGWkzZaooad3ZmrKkuOYiVdaDwFKc5R7"
     var session: URLSession
     var dataTask: URLSessionDataTask?

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Cordinator {
-    
+
     static var homeTabBar: UITabBarController {
         return homeTabBarController()
     }
@@ -20,39 +20,52 @@ class Cordinator {
         return UINavigationController(rootViewController: favoritesController())
     }
     static var photoDetailsViewController: UIViewController {
-        return PhotoDetailsController()
+        return photoDetailsController()
     }
+    static var photoDescriptionSheetPresentationController: UIViewController {
+        return photoDescriptionSheetController()
+    }
+    
+    static let commonViewModel = SpacePhotoAndFavoriteViewModel(withApi: APODApi())
     
     private static func homeTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .white
         tabBarController.tabBar.layer.masksToBounds = true
-        tabBarController.tabBar.layer.cornerRadius = 48
         
         return tabBarController
     }
     private static func spaceController() -> UIViewController {
         let spaceController = SpacePhotosViewController()
-        spaceController.spacePhotosViewModel = SpacePhotosViewModel()
-        spaceController.spacePhotosViewModel?.apodApi = APODApi()
+        spaceController.spacePhotosViewModel = commonViewModel
+        
         //Set tab item
-        spaceController.tabBarItem = UITabBarItem(title: "Space Photos", image: .actions, tag: 1)
+        spaceController.tabBarItem = UITabBarItem(title: "Space Photos", image: .init(systemName: "moon"), tag: 1)
         
         return spaceController
     }
     
     private static func favoritesController() -> UIViewController{
         let favoritesController = FavoritePhotosViewController()
+        favoritesController.favoritePhotosViewModel = commonViewModel
+        
         //Set tab item
-        favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .checkmark, tag: 2)
+        favoritesController.tabBarItem = UITabBarItem(title: "Favorites", image: .init(systemName: "star.leadinghalf.filled"), tag: 2)
         
         return favoritesController
     }
     
-    private static func PhotoDetailsController() -> UIViewController {
+    private static func photoDetailsController() -> UIViewController {
         let photoDetailsController = PhotoDetailsViewController()
+        photoDetailsController.photoDetailsViewModel = PhotoDetailsViewModel()
         
         return photoDetailsController
+    }
+    
+    private static func photoDescriptionSheetController() -> UIViewController {
+        let photoDescriptionController = PhotoDescriptionViewController()
+    
+        return photoDescriptionController
     }
     
 

@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupAppearence()
         
         let tabBarController: UITabBarController = Cordinator.homeTabBar
-        tabBarController.tabBar.barStyle = .black
         tabBarController.setViewControllers([Cordinator.spaceNavigationController,
                                              Cordinator.favoritesNavigationController], animated: true)
 

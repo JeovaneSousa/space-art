@@ -10,6 +10,20 @@ import Kingfisher
 
 class SpacePhotoTableViewCell: UITableViewCell {
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViewCode()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        self.photo = nil
+    }
+    
     var photo: Photo? {
         didSet {
             guard let photo = photo else {return}
@@ -24,7 +38,10 @@ class SpacePhotoTableViewCell: UITableViewCell {
                 likeCounter.text = String(describing: Int.random(in: 0...100))
             }
             
-            guard let isLiked = photo.isLiked else {return}
+            guard let isFavorited = photo.isFavorited,
+                  let isLiked = photo.isLiked else {return}
+            
+            isFavorited ? setFavorite() : unsetFavorite()
             isLiked ? setLike() : setUnlike()
             
             
@@ -36,22 +53,10 @@ class SpacePhotoTableViewCell: UITableViewCell {
             copyrightLabel.isHidden = true
         }
     }
-
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViewCode()
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        photo = nil
-    }
-    
+//-----------------------------------------------------------------//
+//MARK: - Implements SpacePhotoTableViewCell
+//-----------------------------------------------------------------//
     private lazy var containerStackView: UIView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +89,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         imageView.tintColor = .tertiaryLabel
         imageView.image = .init(systemName: "apple.logo")
         imageView.image?.withTintColor(.tertiaryLabel)
-
+        
         
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 30),
@@ -130,7 +135,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = 6
-
+        
         
         stackView.addArrangedSubview(copyrightLabel)
         stackView.addArrangedSubview(dotSeparator)
@@ -159,7 +164,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         viewSeparator.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         viewSeparator.backgroundColor = .white
         viewSeparator.tintColor = .white
-
+        
         
         NSLayoutConstraint.activate([
             viewSeparator.heightAnchor.constraint(equalToConstant: 3),
@@ -177,7 +182,7 @@ class SpacePhotoTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 12, weight: .light)
         label.textColor = .white
         label.text = "1985/02/25"
-
+        
         return label
     }()
     
@@ -212,25 +217,6 @@ class SpacePhotoTableViewCell: UITableViewCell {
         return button
     }()
     
-    @IBAction func favoriteButtonClicked() {
-        guard let photo = photo else {return}
-        photo.pressedFavorited()
-        
-        guard let isFavorited = photo.isFavorited else {return}
-        
-        isFavorited ? setFavorite() : unsetFavorite()
-
-    }
-    
-    private func setFavorite() {
-        favoriteButton.configuration?.image = .init(systemName: "star.fill")
-    }
-    
-    private func unsetFavorite() {
-        favoriteButton.configuration?.image = .init(systemName: "star")
-    }
-    
-    
     private lazy var likeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -264,35 +250,6 @@ class SpacePhotoTableViewCell: UITableViewCell {
         return button
     }()
     
-    @IBAction func likeButtonPressed() {
-        guard let photo = photo else {return}
-        photo.pressedLike()
-        
-        guard let isLiked = photo.isLiked else {return}
-   
-        isLiked ? setLike() : setUnlike()
-    }
-    
-    private func setLike() {
-        likeButton.isHighlighted = true
-        likeButton.configuration?.image = .init(systemName: "heart.fill")
-        likeButton.tintColor = .red
-        
-        guard let currentCount = Int(likeCounter.text!) else {return}
-        likeCounter.text = String(describing: currentCount + 1)
-        
-    }
-    
-    private func setUnlike() {
-        likeButton.isHighlighted = false
-        likeButton.configuration?.image = .init(systemName: "heart")
-        likeButton.tintColor = .white
-        
-        guard let currentCount = Int(likeCounter.text!) else {return}
-        likeCounter.text = String(describing: currentCount - 1)
-    }
-    
-    
     private lazy var likeCounter: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -307,14 +264,61 @@ class SpacePhotoTableViewCell: UITableViewCell {
     private lazy var fillerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         return view
     }()
     
+//-----------------------------------------------------------------//
+//MARK: - Implements Helper Methods
+//-----------------------------------------------------------------//
+    @IBAction func favoriteButtonClicked() {
+        guard let photo = photo else {return}
+        photo.pressedFavorited()
+        
+        guard let isFavorited = photo.isFavorited else {return}
+        
+        isFavorited ? setFavorite() : unsetFavorite()
+    }
     
-
+    @IBAction func likeButtonPressed() {
+        guard let photo = photo else {return}
+        photo.pressedLike()
+        
+        guard let isLiked = photo.isLiked else {return}
+        
+        isLiked ? setLike() : setUnlike()
+    }
+    
+    private func setFavorite() {
+        favoriteButton.configuration?.image = .init(systemName: "star.fill")
+    }
+    
+    private func unsetFavorite() {
+        favoriteButton.configuration?.image = .init(systemName: "star")
+    }
+    
+    private func setLike() {
+        likeButton.isHighlighted = true
+        likeButton.configuration?.image = .init(systemName: "heart.fill")
+        likeButton.tintColor = .red
+        
+        guard let currentCount = Int(likeCounter.text!) else {return}
+        likeCounter.text = String(describing: currentCount + 1)
+    }
+    
+    private func setUnlike() {
+        likeButton.isHighlighted = false
+        likeButton.configuration?.image = .init(systemName: "heart")
+        likeButton.tintColor = .white
+        
+        guard let currentCount = Int(likeCounter.text!) else {return}
+        likeCounter.text = String(describing: currentCount - 1)
+    }
 }
 
+//-----------------------------------------------------------------//
+//MARK: - Implements Viewcode Protocol
+//-----------------------------------------------------------------//
 extension SpacePhotoTableViewCell: Viewcode {
     
     func buildHierarchies() {
@@ -330,9 +334,7 @@ extension SpacePhotoTableViewCell: Viewcode {
             containerStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)
         ])
         
-    }
-    
-    
+    }    
     
     func applyAdditionalSetup() {
         backgroundColor = .clear

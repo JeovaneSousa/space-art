@@ -15,12 +15,14 @@ class Photo: Codable {
     let hdurl: String?
     let explanation: String?
     let copyright: String?
+    let mediaType: String?
     
     var isLiked: Bool?
     var isFavorited: Bool?
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case title,date,url,hdurl,explanation,copyright
+        case mediaType = "media_type"
     }
     
     func pressedLike(){
@@ -41,6 +43,7 @@ extension Photo: CustomStringConvertible {
 \(String(describing: self.hdurl))
 \(String(describing: self.title))
 \(String(describing: self.explanation))
+\(String(describing: self.isFavorited))
 """
     }
     
