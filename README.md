@@ -2,14 +2,10 @@
 
 ## An app to make you wonder about the infinite space
 
-https://user-images.githubusercontent.com/66012358/219421615-33579e69-cef1-4ccf-b795-8a1ed6658402.mp4
-
 About the app:
-
 * I used the APOD NASA API (https://github.com/nasa/apod-api) to acquire amazing photos to show you.
 * You have the ability to add the ones you like the most to you favorites
 * You also have the ability to save the pictures you like into you device camera roll.
-
 
 The following topics were approached during development:
 * I tried to follow best practices when it comes to architechtural patterns by applying MVVM.
@@ -19,7 +15,6 @@ The following topics were approached during development:
 * Everything was done programatically, which makes it a lot easier to review and maintain.
 
 The following tools were used during the project development:
-
 * Swift / UIKit
 * MVVM
 * Delegate pattern
@@ -29,7 +24,9 @@ The following tools were used during the project development:
 * Git
 * Kingfisher Dependency
 
-* The idea was to not focus so much on design, but to apply the concepts of UIKit and Swift learned so far.
+The idea was to not focus so much on design, but to apply the concepts of UIKit and Swift learned so far. Here is how it looks:
+
+https://user-images.githubusercontent.com/66012358/219421615-33579e69-cef1-4ccf-b795-8a1ed6658402.mp4
 
 https://user-images.githubusercontent.com/66012358/219421730-9c6879f7-6977-4a13-b3e0-4a32ac4491e8.mp4
 
